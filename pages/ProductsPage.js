@@ -1,4 +1,4 @@
-// pom/ProductsPage.js - REWRITTEN FOR STABILITY
+// pages/ProductsPage.js - FIXED VERSION
 const { expect } = require('@playwright/test');
 
 exports.ProductsPage = class ProductsPage {
@@ -12,8 +12,10 @@ exports.ProductsPage = class ProductsPage {
         this.allProductsText = page.locator('.features_items > .title');
         this.productList = page.locator('.features_items .single-products');
         
+        // Add the missing searchedProductList property
+        this.searchedProductList = page.locator('.features_items .single-products');
+        
         // --- PRODUCT DETAILS PAGE LOCATORS ---
-        // We scope these to the .product-information container for reliability
         const productInfo = page.locator('.product-information');
         this.productName = productInfo.locator('h2');
         this.productCategory = productInfo.locator('p', { hasText: 'Category:' });
@@ -29,9 +31,9 @@ exports.ProductsPage = class ProductsPage {
         this.searchedProductsText = page.locator('.features_items > .title');
         
         // --- MODAL (POP-UP) LOCATORS ---
-        // We use more descriptive locators instead of generic classes
-        this.modalContent = page.locator('.modal-content');
-        this.continueShoppingButton = this.modalContent.getByRole('button', { name: 'Continue Shopping' });
+        this.modalTitle = page.locator('#cartModal .modal-title');
+        this.modalContent = page.locator('#cartModal .modal-content');
+        this.continueShoppingButton = page.locator('#cartModal').getByText('Continue Shopping');
         this.viewCartLink = this.modalContent.getByRole('link', { name: 'View Cart' });
 
         // --- REVIEW LOCATORS ---
@@ -55,54 +57,64 @@ exports.ProductsPage = class ProductsPage {
      * Clicks the 'View Product' link for the first product in the list.
      */
     async clickFirstProductView() {
-        // Using getByRole is more readable and user-facing than a complex CSS selector.
         await this.page.getByRole('link', { name: 'View Product' }).first().click();
     }
 
     /**
      * Adds a product from the main grid to the cart by its index (0 for first, 1 for second, etc.).
-     * This method is now robust and handles the hover, the specific button, and waiting for the modal.
+     * This method handles the hover, the specific button, and waiting for the modal.
      */
     async addProductToCartByIndex(index) {
         const product = this.productList.nth(index);
         await product.hover();
 
-        // This locator is now specific to the hover overlay and uses a force click to bypass ads.
-        await product.locator('.product-overlay .add-to-cart').click();
-
-        // This method is now responsible for waiting for the confirmation modal, fixing the race condition.
-        await this.modalContent.waitFor();
+        // Wait for the overlay to appear and be visible
+        await product.locator('a.add-to-cart').first().click();
+        
+        
+        // Wait for the modal to appear
+        await expect(this.modalTitle).toBeVisible();
+        await expect(this.modalTitle).toHaveText('Added!');
     }
+
 
     /**
      * Clicks the 'Add to cart' button on the Product Details page.
      */
     async clickAddToCart() {
-        // This locator is highly specific to the button on the details page.
         await this.page.locator('button.cart').click();
+        // Wait for modal to appear after adding to cart
+        //await this.continueShoppingButton.waitFor({ state: 'visible', timeout: 10000 });
     }
     
     /**
      * Clicks the 'Continue Shopping' button in the 'Added!' modal.
+     * FIXED: Removed the incorrect evaluate syntax
      */
     async clickContinueShopping() {
-        // We wait for the button to be ready before clicking.
-        await this.continueShoppingButton.evaluate(element > element.click());
+       
+        await this.continueShoppingButton.click();
+        // Wait for modal to close
+        //await this.modalContent.waitFor({ state: 'hidden', timeout: 5000 });
     }
 
     /**
      * Clicks the 'View Cart' link in the 'Added!' modal.
+     * FIXED: Removed the incorrect evaluate syntax
      */
     async clickViewCart() {
-        await this.viewCartLink.evaluate(element => element.click());
+        await this.viewCartLink.click();
     }
     
     async searchProduct(productName) {
         await this.searchInput.fill(productName);
         await this.searchButton.click();
+        // Wait for search results to load
+        await this.searchedProductsText.waitFor({ state: 'visible'});
     }
 
     async setQuantity(quantity) {
+        await this.quantityInput.clear();
         await this.quantityInput.fill(quantity.toString());
     }
 
@@ -116,9 +128,11 @@ exports.ProductsPage = class ProductsPage {
     async viewWomenDressProducts() {
         await this.categoryWomen.click();
         await this.categoryWomenDress.click();
+        await this.page.waitForLoadState('networkidle');
     }
 
     async viewPoloBrandProducts() {
         await this.brandPolo.click();
+        await this.page.waitForLoadState('networkidle');
     }
 };

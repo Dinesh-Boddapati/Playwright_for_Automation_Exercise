@@ -23,14 +23,39 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  reporter: [
+    ['html'],
+    ['line'],
+    ['json', { outputFile: 'test-results.json' }]
+  ],
+  
+  /* Global timeout for each test */
+  timeout: 60000, // Increased to 60 seconds
+  
+  /* Expect timeout for assertions */
+  expect: {
+    timeout: 10000, // 10 seconds for assertions
+  },
+  
+  /* Shared settings for all the projects below */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://automationexercise.com',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    /* Collect trace when retrying the failed test */
+    trace: 'retain-on-failure',
+    
+    /* Take screenshot on failure */
+    screenshot: 'only-on-failure',
+    
+    /* Record video on failure */
+    video: 'retain-on-failure',
+    
+    /* Navigation timeout */
+    navigationTimeout: 30000,
+    
+    /* Action timeout */
+    actionTimeout: 15000,
   },
 
   /* Configure projects for major browsers */

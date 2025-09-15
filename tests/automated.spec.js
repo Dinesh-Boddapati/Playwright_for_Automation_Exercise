@@ -46,20 +46,56 @@ async function createUserAndLogin(page) {
     await homePage.clickSignupLogin();
     await loginPage.signup(user.name, user.email);
     await signupPage.fillAccountDetails(user);
-    await accountCreatedPage.getAccountCreatedText(); // Wait for confirmation
+    await accountCreatedPage.getAccountCreatedText();
+    await expect(accountCreatedPage.accountCreatedText).toBeVisible(); // Wait for confirmation
     await accountCreatedPage.clickContinue();
     
-    // This handles the ad that sometimes appears after registration.
+    // Enhanced ad handling with multiple strategies
     try {
-        await page.frameLocator('iframe[name="aswift_6"]').locator('#dismiss-button').click({ timeout: 5000 });
-        await page.frameLocator('iframe[name="ad_iframe"]').locator('#dismiss-button').click({ timeout: 5000 });
+        // Strategy 1: Try common iframe ad selectors
+        const adIframes = [
+            'iframe[name="aswift_6"]',
+            'iframe[name="ad_iframe"]',
+            'iframe[id*="google_ads"]'
+        ];
+        
+        for (const iframeSelector of adIframes) {
+            try {
+                const frame = page.frameLocator(iframeSelector);
+                await frame.locator('#dismiss-button').click({ timeout: 3000 });
+                console.log(`Ad closed using iframe: ${iframeSelector}`);
+                break;
+            } catch (e) {
+                continue;
+            }
+        }
+        
+        // Strategy 2: Try direct selectors
+        const directSelectors = [
+            '[id*="dismiss"]',
+            '.ad-close',
+            '[aria-label*="Close"]',
+            '[title*="Close"]'
+        ];
+        
+        for (const selector of directSelectors) {
+            try {
+                await page.locator(selector).first().click({ timeout: 2000 });
+                console.log(`Ad closed using selector: ${selector}`);
+                break;
+            } catch (e) {
+                continue;
+            }
+        }
     } catch (error) {
-        console.log('Ad not found or could not be closed, continuing test.');
+        console.log('No ads found or could not close ads, continuing test.');
     }
+    
+    // Verify login was successful
+    await expect(homePage.loggedInAsText).toContainText(user.name, { timeout: 15000 });
     
     return user;
 }
-
 
 // --- Test Cases ---
 
@@ -101,9 +137,6 @@ test('Test Case 1: Register User', async ({ page }) => {
     await loginPage.signup(name, email);
     await expect(signupPage.enterAccountInfoText).toHaveText('Enter Account Information');
 
-    await signupPage.fillAccount;
-
-// ... later in the test, replace Details(userData) with this:
     await signupPage.fillAccountDetails(userData);
     await expect(accountCreatedPage.accountCreatedText).toHaveText('Account Created!');
     
@@ -210,8 +243,7 @@ test('Test Case 6: Contact Us Form', async ({ page }) => {
         fs.writeFileSync(filePath, 'This is a test file for upload.');
     }
     
-
-    await contactUsPage.submitForm(name, email, subject, message, filePath)
+    await contactUsPage.submitForm(name, email, subject, message, filePath);
 
     await expect(contactUsPage.successMessage).toContainText('Success! Your details have been submitted successfully.');
 });
@@ -242,8 +274,6 @@ test('Test Case 8: Verify All Products and product detail page', async ({ page }
     await expect(productsPage.productCondition).toBeVisible();
     await expect(productsPage.productBrand).toBeVisible();
 });
-
-// tests/automated.spec.js
 
 test('Test Case 9: Search Product', async ({ page }) => {
     const homePage = new HomePage(page);
@@ -304,7 +334,6 @@ test('Test Case 12: Add Products in Cart', async ({ page }) => {
     await productsPage.clickViewCart();
 
     await expect(cartPage.cartItems).toHaveCount(2);
-    // You can add more specific assertions here for product names, prices, etc.
 });
 
 test('Test Case 13: Verify Product quantity in Cart', async ({ page }) => {
@@ -498,7 +527,7 @@ test('Test Case 20: Search Products and Verify Cart After Login', async ({ page 
     // Search and add products to cart
     await homePage.clickProducts();
     await productsPage.searchProduct('Dress');
-    const products = await productsPage.searchedProductList.all();
+    const products = await productsPage.productList.all();
     for (const product of products) {
         await product.hover();
         await product.locator('.add-to-cart').click();
@@ -571,7 +600,10 @@ test('Test Case 23: Verify address details in checkout page', async ({ page }) =
     expect(deliveryAddress).toContain(user.country);
     expect(deliveryAddress).toContain(user.mobileNumber);
     
-    expect(billingAddress).toEqual(deliveryAddress);
+    // Compare address content without headers
+    const deliveryContent = deliveryAddress.split('\n').slice(1).join('\n');
+    const billingContent = billingAddress.split('\n').slice(1).join('\n');
+    expect(billingContent.trim()).toEqual(deliveryContent.trim());
 });
 
 test('Test Case 24: Download Invoice after purchase', async ({ page }) => {

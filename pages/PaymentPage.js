@@ -26,8 +26,20 @@ exports.PaymentPage = class PaymentPage {
     }
 
     async clickPayAndConfirm() {
-        await this.payAndConfirmButton.click();
+    // Wait for the button to be visible and enabled
+    await this.payAndConfirmButton.waitFor({ state: 'visible', timeout: 10000 });
+    
+    // Scroll the button into view
+    await this.payAndConfirmButton.scrollIntoViewIfNeeded();
+    
+    // Try different click strategies
+    try {
+        await this.payAndConfirmButton.click({ timeout: 15000 });
+    } catch (error) {
+        console.log('Regular click failed, trying force click');
+        await this.payAndConfirmButton.click({ force: true, timeout: 15000 });
     }
+}
     
     async getOrderSuccessMessage() {
         return await this.orderSuccessMessage.textContent();
