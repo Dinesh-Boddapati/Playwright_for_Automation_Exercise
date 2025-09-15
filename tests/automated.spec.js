@@ -535,7 +535,7 @@ test('Test Case 20: Search Products and Verify Cart After Login', async ({ page 
     const products = await productsPage.productList.all();
     for (const product of products) {
         await product.hover();
-        await product.locator('.add-to-cart').click();
+        await product.locator('.add-to-cart').first().click();
         await productsPage.clickContinueShopping();
     }
     

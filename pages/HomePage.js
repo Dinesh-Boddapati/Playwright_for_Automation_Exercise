@@ -7,7 +7,7 @@ exports.HomePage = class HomePage {
      */
     constructor(page) {
         this.page = page;
-        this.signupLoginButton = page.locator('a[href="/login"]');
+        this.signupLoginButton = page.getByRole('link', { name: ' Signup / Login' });
         this.logoutButton = page.locator('a[href="/logout"]');
         this.deleteAccountButton = page.locator('a[href="/delete_account"]');
         this.loggedInAsText = page.locator('a', { hasText: 'Logged in as' });
