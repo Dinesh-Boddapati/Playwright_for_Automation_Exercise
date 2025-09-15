@@ -12,7 +12,7 @@ exports.PaymentPage = class PaymentPage {
         this.cvcInput = page.locator('input[data-qa="cvc"]');
         this.expiryMonthInput = page.locator('input[data-qa="expiry-month"]');
         this.expiryYearInput = page.locator('input[data-qa="expiry-year"]');
-        this.payAndConfirmButton = page.locator('button[data-qa="pay-and-confirm-order"]');
+        this.payAndConfirmButton = page.locator('#submit');
         this.orderSuccessMessage = page.locator('.col-sm-9 > p');
         this.downloadInvoiceButton = page.locator('.col-sm-9 > a[href^="/download_invoice/"]');
     }
@@ -27,19 +27,8 @@ exports.PaymentPage = class PaymentPage {
 
     async clickPayAndConfirm() {
     // Wait for the button to be visible and enabled
-    await this.payAndConfirmButton.waitFor({ state: 'visible', timeout: 10000 });
-    
-    // Scroll the button into view
-    await this.payAndConfirmButton.scrollIntoViewIfNeeded();
-    
-    // Try different click strategies
-    try {
-        await this.payAndConfirmButton.click({ timeout: 15000 });
-    } catch (error) {
-        console.log('Regular click failed, trying force click');
-        await this.payAndConfirmButton.click({ force: true, timeout: 15000 });
+    await this.payAndConfirmButton.click();
     }
-}
     
     async getOrderSuccessMessage() {
         return await this.orderSuccessMessage.textContent();

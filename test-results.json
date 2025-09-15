@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 14
     },
     "preserveOutput": "always",
     "reporter": [
@@ -41,7 +41,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 14
         },
         "id": "chromium",
         "name": "chromium",
@@ -55,7 +55,7 @@
     ],
     "shard": null,
     "updateSnapshots": "missing",
-    "updateSourceMethod": "3way",
+    "updateSourceMethod": "patch",
     "version": "1.55.0",
     "workers": 14,
     "webServer": null
@@ -68,7 +68,441 @@
       "line": 0,
       "specs": [
         {
-          "title": "Test Case 14: Place Order: Register while Checkout",
+          "title": "Test Case 1: Register User",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18844,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Ad not found or could not be closed, continuing test.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.771Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-54c59298d3724dc9dbaa",
+          "file": "automated.spec.js",
+          "line": 102,
+          "column": 1
+        },
+        {
+          "title": "Test Case 2: Login User with correct email and password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 33263,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.758Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-0f2a0e71471a04727b78",
+          "file": "automated.spec.js",
+          "line": 159,
+          "column": 1
+        },
+        {
+          "title": "Test Case 3: Login User with incorrect email and password",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 17824,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.login-form > h2')\nExpected string: \u001b[32m\"Login to your account\"\u001b[39m\nReceived: <element(s) not found>\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.login-form > h2')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.login-form > h2')\nExpected string: \u001b[32m\"Login to your account\"\u001b[39m\nReceived: <element(s) not found>\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.login-form > h2')\u001b[22m\n\n    at E:\\automation Workspace\\tests\\automated.spec.js:189:45",
+                    "location": {
+                      "file": "E:\\automation Workspace\\tests\\automated.spec.js",
+                      "column": 45,
+                      "line": 189
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 187 |\u001b[39m\n \u001b[90m 188 |\u001b[39m     \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mclickSignupLogin()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 189 |\u001b[39m     \u001b[36mawait\u001b[39m expect(loginPage\u001b[33m.\u001b[39mloginHeaderText)\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Login to your account'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 190 |\u001b[39m\n \u001b[90m 191 |\u001b[39m     \u001b[36mconst\u001b[39m incorrectEmail \u001b[33m=\u001b[39m faker\u001b[33m.\u001b[39minternet\u001b[33m.\u001b[39memail()\u001b[33m;\u001b[39m\n \u001b[90m 192 |\u001b[39m     \u001b[36mconst\u001b[39m incorrectPassword \u001b[33m=\u001b[39m faker\u001b[33m.\u001b[39minternet\u001b[33m.\u001b[39mpassword()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\automation Workspace\\tests\\automated.spec.js",
+                        "column": 45,
+                        "line": 189
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.login-form > h2')\nExpected string: \u001b[32m\"Login to your account\"\u001b[39m\nReceived: <element(s) not found>\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.login-form > h2')\u001b[22m\n\n\n\u001b[0m \u001b[90m 187 |\u001b[39m\n \u001b[90m 188 |\u001b[39m     \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mclickSignupLogin()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 189 |\u001b[39m     \u001b[36mawait\u001b[39m expect(loginPage\u001b[33m.\u001b[39mloginHeaderText)\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Login to your account'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 190 |\u001b[39m\n \u001b[90m 191 |\u001b[39m     \u001b[36mconst\u001b[39m incorrectEmail \u001b[33m=\u001b[39m faker\u001b[33m.\u001b[39minternet\u001b[33m.\u001b[39memail()\u001b[33m;\u001b[39m\n \u001b[90m 192 |\u001b[39m     \u001b[36mconst\u001b[39m incorrectPassword \u001b[33m=\u001b[39m faker\u001b[33m.\u001b[39minternet\u001b[33m.\u001b[39mpassword()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at E:\\automation Workspace\\tests\\automated.spec.js:189:45\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.764Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-3-Logi-86ce9-ncorrect-email-and-password-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-3-Logi-86ce9-ncorrect-email-and-password-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-3-Logi-86ce9-ncorrect-email-and-password-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-3-Logi-86ce9-ncorrect-email-and-password-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\automation Workspace\\tests\\automated.spec.js",
+                    "column": 45,
+                    "line": 189
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-7815278b45b624fb08dc",
+          "file": "automated.spec.js",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "Test Case 4: Logout User",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 30570,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.799Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-9ba72436e37dca53f890",
+          "file": "automated.spec.js",
+          "line": 199,
+          "column": 1
+        },
+        {
+          "title": "Test Case 5: Register User with existing email",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 4,
+                  "status": "passed",
+                  "duration": 32804,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.827Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-bf0f9fb953d7b7cf4f78",
+          "file": "automated.spec.js",
+          "line": 211,
+          "column": 1
+        },
+        {
+          "title": "Test Case 6: Contact Us Form",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 5,
+                  "status": "passed",
+                  "duration": 8483,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.805Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-c1fbc0e9f46267b18b7f",
+          "file": "automated.spec.js",
+          "line": 227,
+          "column": 1
+        },
+        {
+          "title": "Test Case 7: Verify Test Cases Page",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 6,
+                  "status": "failed",
+                  "duration": 12788,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected string: \u001b[32m\"Automation Exercise\"\u001b[39m\nReceived string: \u001b[31m\"\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 10000ms\u001b[22m\n\u001b[2m    13 × unexpected value \"\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected string: \u001b[32m\"Automation Exercise\"\u001b[39m\nReceived string: \u001b[31m\"\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 10000ms\u001b[22m\n\u001b[2m    13 × unexpected value \"\"\u001b[22m\n\n    at HomePage.goto (E:\\automation Workspace\\pages\\HomePage.js:29:33)\n    at E:\\automation Workspace\\tests\\automated.spec.js:253:5",
+                    "location": {
+                      "file": "E:\\automation Workspace\\pages\\HomePage.js",
+                      "column": 33,
+                      "line": 29
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\HomePage.js:29\n\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[36masync\u001b[39m goto() {\n \u001b[90m 28 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 |\u001b[39m         \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[32m'Automation Exercise'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 30 |\u001b[39m     }\n \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[36masync\u001b[39m clickSignupLogin() {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\automation Workspace\\pages\\HomePage.js",
+                        "column": 33,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected string: \u001b[32m\"Automation Exercise\"\u001b[39m\nReceived string: \u001b[31m\"\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 10000ms\u001b[22m\n\u001b[2m    13 × unexpected value \"\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\HomePage.js:29\n\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[36masync\u001b[39m goto() {\n \u001b[90m 28 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 |\u001b[39m         \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[32m'Automation Exercise'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 30 |\u001b[39m     }\n \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[36masync\u001b[39m clickSignupLogin() {\u001b[0m\n\u001b[2m    at HomePage.goto (E:\\automation Workspace\\pages\\HomePage.js:29:33)\u001b[22m\n\u001b[2m    at E:\\automation Workspace\\tests\\automated.spec.js:253:5\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.869Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-7-Verify-Test-Cases-Page-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-7-Verify-Test-Cases-Page-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-7-Verify-Test-Cases-Page-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-7-Verify-Test-Cases-Page-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\automation Workspace\\pages\\HomePage.js",
+                    "column": 33,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-4f1de0cef2ff2d7603b2",
+          "file": "automated.spec.js",
+          "line": 251,
+          "column": 1
+        },
+        {
+          "title": "Test Case 8: Verify All Products and product detail page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 7,
+                  "status": "passed",
+                  "duration": 8744,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.869Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-ff2b8667381058d54a25",
+          "file": "automated.spec.js",
+          "line": 259,
+          "column": 1
+        },
+        {
+          "title": "Test Case 9: Search Product",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 8,
+                  "status": "passed",
+                  "duration": 7095,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.829Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-f4d5688f803c176826dd",
+          "file": "automated.spec.js",
+          "line": 278,
+          "column": 1
+        },
+        {
+          "title": "Test Case 10: Verify Subscription in home page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 9,
+                  "status": "passed",
+                  "duration": 6449,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.867Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-99d3b5377516f6f4f2f4",
+          "file": "automated.spec.js",
+          "line": 302,
+          "column": 1
+        },
+        {
+          "title": "Test Case 11: Verify Subscription in Cart page",
           "ok": false,
           "tags": [],
           "tests": [
@@ -81,69 +515,759 @@
               "results": [
                 {
                   "workerIndex": 10,
-                  "parallelIndex": 0,
+                  "parallelIndex": 10,
                   "status": "failed",
-                  "duration": 32698,
+                  "duration": 22439,
                   "error": {
-                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#cart_info_table tbody tr').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#cart_info_table tbody tr').first()\u001b[22m\n",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#cart_info_table tbody tr').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#cart_info_table tbody tr').first()\u001b[22m\n\n    at E:\\automation Workspace\\tests\\automated.spec.js:378:46",
+                    "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#susbscribe_email')\u001b[22m\n",
+                    "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#susbscribe_email')\u001b[22m\n\n    at CartPage.enterSubscriptionEmail (E:\\automation Workspace\\pages\\CartPage.js:50:43)\n    at E:\\automation Workspace\\tests\\automated.spec.js:316:20",
                     "location": {
-                      "file": "E:\\automation Workspace\\tests\\automated.spec.js",
-                      "column": 46,
-                      "line": 378
+                      "file": "E:\\automation Workspace\\pages\\CartPage.js",
+                      "column": 43,
+                      "line": 50
                     },
-                    "snippet": "\u001b[0m \u001b[90m 376 |\u001b[39m     expect(deliveryAddress)\u001b[33m.\u001b[39mtoContain(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m 377 |\u001b[39m     expect(deliveryAddress)\u001b[33m.\u001b[39mtoContain(user\u001b[33m.\u001b[39maddress1)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 378 |\u001b[39m     \u001b[36mawait\u001b[39m expect(cartPage\u001b[33m.\u001b[39mcartItems\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 379 |\u001b[39m\n \u001b[90m 380 |\u001b[39m     \u001b[36mawait\u001b[39m checkoutPage\u001b[33m.\u001b[39menterComment(\u001b[32m'Placing a test order.'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 381 |\u001b[39m     \u001b[36mawait\u001b[39m checkoutPage\u001b[33m.\u001b[39mclickPlaceOrder()\u001b[33m;\u001b[39m\u001b[0m"
+                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\CartPage.js:50\n\n\u001b[0m \u001b[90m 48 |\u001b[39m     \n \u001b[90m 49 |\u001b[39m     \u001b[36masync\u001b[39m enterSubscriptionEmail(email) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubscriptionEmailInput\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubscriptionButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 52 |\u001b[39m     }\n \u001b[90m 53 |\u001b[39m\u001b[0m"
                   },
                   "errors": [
                     {
                       "location": {
-                        "file": "E:\\automation Workspace\\tests\\automated.spec.js",
-                        "column": 46,
-                        "line": 378
+                        "file": "E:\\automation Workspace\\pages\\CartPage.js",
+                        "column": 43,
+                        "line": 50
                       },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#cart_info_table tbody tr').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#cart_info_table tbody tr').first()\u001b[22m\n\n\n\u001b[0m \u001b[90m 376 |\u001b[39m     expect(deliveryAddress)\u001b[33m.\u001b[39mtoContain(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m 377 |\u001b[39m     expect(deliveryAddress)\u001b[33m.\u001b[39mtoContain(user\u001b[33m.\u001b[39maddress1)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 378 |\u001b[39m     \u001b[36mawait\u001b[39m expect(cartPage\u001b[33m.\u001b[39mcartItems\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 379 |\u001b[39m\n \u001b[90m 380 |\u001b[39m     \u001b[36mawait\u001b[39m checkoutPage\u001b[33m.\u001b[39menterComment(\u001b[32m'Placing a test order.'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 381 |\u001b[39m     \u001b[36mawait\u001b[39m checkoutPage\u001b[33m.\u001b[39mclickPlaceOrder()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at E:\\automation Workspace\\tests\\automated.spec.js:378:46\u001b[22m"
+                      "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#susbscribe_email')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\CartPage.js:50\n\n\u001b[0m \u001b[90m 48 |\u001b[39m     \n \u001b[90m 49 |\u001b[39m     \u001b[36masync\u001b[39m enterSubscriptionEmail(email) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubscriptionEmailInput\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubscriptionButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 52 |\u001b[39m     }\n \u001b[90m 53 |\u001b[39m\u001b[0m\n\u001b[2m    at CartPage.enterSubscriptionEmail (E:\\automation Workspace\\pages\\CartPage.js:50:43)\u001b[22m\n\u001b[2m    at E:\\automation Workspace\\tests\\automated.spec.js:316:20\u001b[22m"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-09-14T20:15:48.935Z",
+                  "startTime": "2025-09-15T17:01:14.889Z",
                   "annotations": [],
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-14-Place-Order-Register-while-Checkout-chromium\\test-failed-1.png"
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-11-Verify-Subscription-in-Cart-page-chromium\\test-failed-1.png"
                     },
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-14-Place-Order-Register-while-Checkout-chromium\\video.webm"
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-11-Verify-Subscription-in-Cart-page-chromium\\video.webm"
                     },
                     {
                       "name": "error-context",
                       "contentType": "text/markdown",
-                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-14-Place-Order-Register-while-Checkout-chromium\\error-context.md"
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-11-Verify-Subscription-in-Cart-page-chromium\\error-context.md"
                     },
                     {
                       "name": "trace",
                       "contentType": "application/zip",
-                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-14-Place-Order-Register-while-Checkout-chromium\\trace.zip"
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-11-Verify-Subscription-in-Cart-page-chromium\\trace.zip"
                     }
                   ],
                   "errorLocation": {
-                    "file": "E:\\automation Workspace\\tests\\automated.spec.js",
-                    "column": 46,
-                    "line": 378
+                    "file": "E:\\automation Workspace\\pages\\CartPage.js",
+                    "column": 43,
+                    "line": 50
                   }
                 }
               ],
               "status": "unexpected"
             }
           ],
+          "id": "eb0b7043c48a56b2f66a-ae00b25c3c70db78e97c",
+          "file": "automated.spec.js",
+          "line": 310,
+          "column": 1
+        },
+        {
+          "title": "Test Case 12: Add Products in Cart",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 11,
+                  "status": "failed",
+                  "duration": 16909,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#cartModal .modal-title')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#cartModal .modal-title')\u001b[22m\n\u001b[2m    13 × locator resolved to <h4 class=\"modal-title w-100\">Added!</h4>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#cartModal .modal-title')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#cartModal .modal-title')\u001b[22m\n\u001b[2m    13 × locator resolved to <h4 class=\"modal-title w-100\">Added!</h4>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n    at ProductsPage.addProductToCartByIndex (E:\\automation Workspace\\pages\\ProductsPage.js:76:39)\n    at E:\\automation Workspace\\tests\\automated.spec.js:329:5",
+                    "location": {
+                      "file": "E:\\automation Workspace\\pages\\ProductsPage.js",
+                      "column": 39,
+                      "line": 76
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\ProductsPage.js:76\n\n\u001b[0m \u001b[90m 74 |\u001b[39m         \n \u001b[90m 75 |\u001b[39m         \u001b[90m// Wait for the modal to appear\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 76 |\u001b[39m         \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mmodalTitle)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 77 |\u001b[39m         \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mmodalTitle)\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Added!'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 78 |\u001b[39m     }\n \u001b[90m 79 |\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\automation Workspace\\pages\\ProductsPage.js",
+                        "column": 39,
+                        "line": 76
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#cartModal .modal-title')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#cartModal .modal-title')\u001b[22m\n\u001b[2m    13 × locator resolved to <h4 class=\"modal-title w-100\">Added!</h4>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\ProductsPage.js:76\n\n\u001b[0m \u001b[90m 74 |\u001b[39m         \n \u001b[90m 75 |\u001b[39m         \u001b[90m// Wait for the modal to appear\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 76 |\u001b[39m         \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mmodalTitle)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 77 |\u001b[39m         \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mmodalTitle)\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Added!'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 78 |\u001b[39m     }\n \u001b[90m 79 |\u001b[39m\u001b[0m\n\u001b[2m    at ProductsPage.addProductToCartByIndex (E:\\automation Workspace\\pages\\ProductsPage.js:76:39)\u001b[22m\n\u001b[2m    at E:\\automation Workspace\\tests\\automated.spec.js:329:5\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.929Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-12-Add-Products-in-Cart-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-12-Add-Products-in-Cart-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-12-Add-Products-in-Cart-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-12-Add-Products-in-Cart-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\automation Workspace\\pages\\ProductsPage.js",
+                    "column": 39,
+                    "line": 76
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-c1ba49135e31b0254a84",
+          "file": "automated.spec.js",
+          "line": 320,
+          "column": 1
+        },
+        {
+          "title": "Test Case 13: Verify Product quantity in Cart",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 12,
+                  "status": "failed",
+                  "duration": 23637,
+                  "error": {
+                    "message": "TimeoutError: locator.clear: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#quantity')\u001b[22m\n",
+                    "stack": "TimeoutError: locator.clear: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#quantity')\u001b[22m\n\n    at ProductsPage.setQuantity (E:\\automation Workspace\\pages\\ProductsPage.js:117:34)\n    at E:\\automation Workspace\\tests\\automated.spec.js:346:24",
+                    "location": {
+                      "file": "E:\\automation Workspace\\pages\\ProductsPage.js",
+                      "column": 34,
+                      "line": 117
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\ProductsPage.js:117\n\n\u001b[0m \u001b[90m 115 |\u001b[39m\n \u001b[90m 116 |\u001b[39m     \u001b[36masync\u001b[39m setQuantity(quantity) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 117 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mquantityInput\u001b[33m.\u001b[39mclear()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 118 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mquantityInput\u001b[33m.\u001b[39mfill(quantity\u001b[33m.\u001b[39mtoString())\u001b[33m;\u001b[39m\n \u001b[90m 119 |\u001b[39m     }\n \u001b[90m 120 |\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\automation Workspace\\pages\\ProductsPage.js",
+                        "column": 34,
+                        "line": 117
+                      },
+                      "message": "TimeoutError: locator.clear: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#quantity')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\ProductsPage.js:117\n\n\u001b[0m \u001b[90m 115 |\u001b[39m\n \u001b[90m 116 |\u001b[39m     \u001b[36masync\u001b[39m setQuantity(quantity) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 117 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mquantityInput\u001b[33m.\u001b[39mclear()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 118 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mquantityInput\u001b[33m.\u001b[39mfill(quantity\u001b[33m.\u001b[39mtoString())\u001b[33m;\u001b[39m\n \u001b[90m 119 |\u001b[39m     }\n \u001b[90m 120 |\u001b[39m\u001b[0m\n\u001b[2m    at ProductsPage.setQuantity (E:\\automation Workspace\\pages\\ProductsPage.js:117:34)\u001b[22m\n\u001b[2m    at E:\\automation Workspace\\tests\\automated.spec.js:346:24\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.823Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-13-Verify-Product-quantity-in-Cart-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-13-Verify-Product-quantity-in-Cart-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-13-Verify-Product-quantity-in-Cart-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-13-Verify-Product-quantity-in-Cart-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\automation Workspace\\pages\\ProductsPage.js",
+                    "column": 34,
+                    "line": 117
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-e5797911e8ffcf41de1e",
+          "file": "automated.spec.js",
+          "line": 339,
+          "column": 1
+        },
+        {
+          "title": "Test Case 14: Place Order: Register while Checkout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 13,
+                  "status": "passed",
+                  "duration": 35741,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:14.864Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
           "id": "eb0b7043c48a56b2f66a-fbe4af3e650ceb0652d0",
           "file": "automated.spec.js",
           "line": 354,
+          "column": 1
+        },
+        {
+          "title": "Test Case 15: Place Order: Register before Checkout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 9,
+                  "status": "passed",
+                  "duration": 30853,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:21.848Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-c4fb4a62eb18828bf44a",
+          "file": "automated.spec.js",
+          "line": 404,
+          "column": 1
+        },
+        {
+          "title": "Test Case 16: Place Order: Login before Checkout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 8,
+                  "status": "passed",
+                  "duration": 32962,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:22.352Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-a7ede5afb08dd5a1b7ac",
+          "file": "automated.spec.js",
+          "line": 441,
+          "column": 1
+        },
+        {
+          "title": "Test Case 17: Remove Products From Cart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 5,
+                  "status": "passed",
+                  "duration": 7850,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:23.744Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-5b796b146a1c0df50913",
+          "file": "automated.spec.js",
+          "line": 484,
+          "column": 1
+        },
+        {
+          "title": "Test Case 18: View Category Products",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 7,
+                  "status": "passed",
+                  "duration": 9302,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:24.046Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-41968e2250130116282d",
+          "file": "automated.spec.js",
+          "line": 499,
+          "column": 1
+        },
+        {
+          "title": "Test Case 19: View & Cart Brand Products",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 14,
+                  "parallelIndex": 6,
+                  "status": "passed",
+                  "duration": 8304,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:34.067Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-101680167654e3beb577",
+          "file": "automated.spec.js",
+          "line": 510,
+          "column": 1
+        },
+        {
+          "title": "Test Case 20: Search Products and Verify Cart After Login",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 5,
+                  "status": "failed",
+                  "duration": 30327,
+                  "error": {
+                    "message": "Error: locator.click: Error: strict mode violation: locator('a[href=\"/login\"]') resolved to 2 elements:\n    1) <a href=\"/login\">…</a> aka getByRole('link', { name: ' Signup / Login' })\n    2) <a href=\"/login\">…</a> aka locator('a').filter({ hasText: 'Register / Login' })\n\nCall log:\n\u001b[2m  - waiting for locator('a[href=\"/login\"]')\u001b[22m\n",
+                    "stack": "Error: locator.click: Error: strict mode violation: locator('a[href=\"/login\"]') resolved to 2 elements:\n    1) <a href=\"/login\">…</a> aka getByRole('link', { name: ' Signup / Login' })\n    2) <a href=\"/login\">…</a> aka locator('a').filter({ hasText: 'Register / Login' })\n\nCall log:\n\u001b[2m  - waiting for locator('a[href=\"/login\"]')\u001b[22m\n\n    at HomePage.clickSignupLogin (E:\\automation Workspace\\pages\\HomePage.js:33:38)\n    at E:\\automation Workspace\\tests\\automated.spec.js:546:20",
+                    "location": {
+                      "file": "E:\\automation Workspace\\pages\\HomePage.js",
+                      "column": 38,
+                      "line": 33
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\HomePage.js:33\n\n\u001b[0m \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[36masync\u001b[39m clickSignupLogin() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 33 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msignupLoginButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 34 |\u001b[39m     }\n \u001b[90m 35 |\u001b[39m\n \u001b[90m 36 |\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\automation Workspace\\pages\\HomePage.js",
+                        "column": 38,
+                        "line": 33
+                      },
+                      "message": "Error: locator.click: Error: strict mode violation: locator('a[href=\"/login\"]') resolved to 2 elements:\n    1) <a href=\"/login\">…</a> aka getByRole('link', { name: ' Signup / Login' })\n    2) <a href=\"/login\">…</a> aka locator('a').filter({ hasText: 'Register / Login' })\n\nCall log:\n\u001b[2m  - waiting for locator('a[href=\"/login\"]')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\HomePage.js:33\n\n\u001b[0m \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[36masync\u001b[39m clickSignupLogin() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 33 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msignupLoginButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 34 |\u001b[39m     }\n \u001b[90m 35 |\u001b[39m\n \u001b[90m 36 |\u001b[39m\u001b[0m\n\u001b[2m    at HomePage.clickSignupLogin (E:\\automation Workspace\\pages\\HomePage.js:33:38)\u001b[22m\n\u001b[2m    at E:\\automation Workspace\\tests\\automated.spec.js:546:20\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:31.624Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-20-Sea-be06b-and-Verify-Cart-After-Login-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-20-Sea-be06b-and-Verify-Cart-After-Login-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-20-Sea-be06b-and-Verify-Cart-After-Login-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-20-Sea-be06b-and-Verify-Cart-After-Login-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\automation Workspace\\pages\\HomePage.js",
+                    "column": 38,
+                    "line": 33
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-ff768f99b33b446b6404",
+          "file": "automated.spec.js",
+          "line": 522,
+          "column": 1
+        },
+        {
+          "title": "Test Case 21: Add review on product",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 15,
+                  "parallelIndex": 11,
+                  "status": "passed",
+                  "duration": 4288,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:36.438Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-4f626e521949cd2e2375",
+          "file": "automated.spec.js",
+          "line": 552,
+          "column": 1
+        },
+        {
+          "title": "Test Case 22: Add to cart from Recommended items",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 7,
+                  "status": "passed",
+                  "duration": 9486,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:33.366Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-42af3a039d914fa63258",
+          "file": "automated.spec.js",
+          "line": 570,
+          "column": 1
+        },
+        {
+          "title": "Test Case 23: Verify address details in checkout page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 23812,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:36.952Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-b2ceed83cd3e6738248b",
+          "file": "automated.spec.js",
+          "line": 585,
+          "column": 1
+        },
+        {
+          "title": "Test Case 24: Download Invoice after purchase",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27853,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:34.035Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-f650d83348b27e1b11fc",
+          "file": "automated.spec.js",
+          "line": 614,
+          "column": 1
+        },
+        {
+          "title": "Test Case 25: Verify Scroll Up using Arrow button and Scroll Down functionality",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 17,
+                  "parallelIndex": 10,
+                  "status": "failed",
+                  "duration": 14548,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m()\u001b[22m failed\n\nLocator:  locator('h2').filter({ hasText: 'Subscription' })\nExpected: in viewport\nReceived: viewport ratio 0\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('h2').filter({ hasText: 'Subscription' })\u001b[22m\n\u001b[2m    13 × locator resolved to <h2>Subscription</h2>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m()\u001b[22m failed\n\nLocator:  locator('h2').filter({ hasText: 'Subscription' })\nExpected: in viewport\nReceived: viewport ratio 0\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('h2').filter({ hasText: 'Subscription' })\u001b[22m\n\u001b[2m    13 × locator resolved to <h2>Subscription</h2>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0\"\u001b[22m\n\n    at E:\\automation Workspace\\tests\\automated.spec.js:648:74",
+                    "location": {
+                      "file": "E:\\automation Workspace\\tests\\automated.spec.js",
+                      "column": 74,
+                      "line": 648
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 646 |\u001b[39m     \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mgoto()\u001b[33m;\u001b[39m\n \u001b[90m 647 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 648 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'h2'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Subscription'\u001b[39m }))\u001b[33m.\u001b[39mtoBeInViewport()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 649 |\u001b[39m     \n \u001b[90m 650 |\u001b[39m     \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mclickScrollUpArrow()\u001b[33m;\u001b[39m\n \u001b[90m 651 |\u001b[39m     \u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\automation Workspace\\tests\\automated.spec.js",
+                        "column": 74,
+                        "line": 648
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m()\u001b[22m failed\n\nLocator:  locator('h2').filter({ hasText: 'Subscription' })\nExpected: in viewport\nReceived: viewport ratio 0\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('h2').filter({ hasText: 'Subscription' })\u001b[22m\n\u001b[2m    13 × locator resolved to <h2>Subscription</h2>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 646 |\u001b[39m     \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mgoto()\u001b[33m;\u001b[39m\n \u001b[90m 647 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m window\u001b[33m.\u001b[39mscrollTo(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m document\u001b[33m.\u001b[39mbody\u001b[33m.\u001b[39mscrollHeight))\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 648 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'h2'\u001b[39m)\u001b[33m.\u001b[39mfilter({ hasText\u001b[33m:\u001b[39m \u001b[32m'Subscription'\u001b[39m }))\u001b[33m.\u001b[39mtoBeInViewport()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 649 |\u001b[39m     \n \u001b[90m 650 |\u001b[39m     \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mclickScrollUpArrow()\u001b[33m;\u001b[39m\n \u001b[90m 651 |\u001b[39m     \u001b[0m\n\u001b[2m    at E:\\automation Workspace\\tests\\automated.spec.js:648:74\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:42.739Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-25-Ver-efea7-d-Scroll-Down-functionality-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-25-Ver-efea7-d-Scroll-Down-functionality-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-25-Ver-efea7-d-Scroll-Down-functionality-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\automation Workspace\\test-results\\automated-Test-Case-25-Ver-efea7-d-Scroll-Down-functionality-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\automation Workspace\\tests\\automated.spec.js",
+                    "column": 74,
+                    "line": 648
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-b744700155ed19b4e527",
+          "file": "automated.spec.js",
+          "line": 644,
+          "column": 1
+        },
+        {
+          "title": "Test Case 26: Verify Scroll Up without Arrow button and Scroll Down functionality",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 18,
+                  "parallelIndex": 12,
+                  "status": "passed",
+                  "duration": 3252,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-15T17:01:43.206Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb0b7043c48a56b2f66a-3826fbc598c03fb09c7c",
+          "file": "automated.spec.js",
+          "line": 655,
           "column": 1
         }
       ]
@@ -151,11 +1275,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-14T20:15:44.750Z",
-    "duration": 37596.204000000376,
-    "expected": 0,
+    "startTime": "2025-09-15T17:01:10.202Z",
+    "duration": 52696.566999999995,
+    "expected": 19,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 7,
     "flaky": 0
   }
 }
